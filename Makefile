@@ -3,7 +3,6 @@ default: package
 init:
 	@rm -rf ./.output
 	@mkdir -p ./.output
-
 package: init versionCheck fpmCheck
 
 	fpm \
@@ -15,6 +14,9 @@ package: init versionCheck fpmCheck
 		./jamb.sh=/usr/local/bin/jamb
 
 	@mv ./*.deb ./.output/
+
+install: package
+	@sudo dpkg -i ./.output/jamb*.deb
 
 fpmCheck:
 ifeq ($(shell which fpm), )
