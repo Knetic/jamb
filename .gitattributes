@@ -1,1 +1,3 @@
 Makefile linquist-vendored
+repo_images/* linquist-vendored
+
