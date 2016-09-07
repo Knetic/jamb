@@ -5,8 +5,6 @@
 
 # Transcodes a video into a gif.
 
-PALETTE_PATH="/tmp/palette.png"
-
 function showUsage()
 {
 	echo "Usage: jamb <input video> <output gif location> <horizontal resolution>"
@@ -34,6 +32,9 @@ function checkInstall()
 function convert()
 {
 	# ref: http://superuser.com/questions/556029/how-do-i-convert-a-video-to-gif-using-ffmpeg-with-reasonable-quality
+	local PALETTE_PATH="/tmp/palette.png"
+
+	rm -f "${PALETTE_PATH}"
 
 	# Creates a palette file
 	ffmpeg -loglevel error -y -i "$1" -vf fps=10,scale=320:-1:flags=lanczos,palettegen "${PALETTE_PATH}"
