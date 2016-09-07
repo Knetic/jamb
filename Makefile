@@ -3,7 +3,11 @@ default: package
 init:
 	@rm -rf ./.output
 	@mkdir -p ./.output
-package: init versionCheck fpmCheck
+
+test:
+	@bash -n ./jamb.sh
+
+package: test init versionCheck fpmCheck
 
 	fpm \
 		--log error \
