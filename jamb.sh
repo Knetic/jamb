@@ -9,7 +9,8 @@ PALETTE_PATH="/tmp/palette.png"
 
 function showUsage()
 {
-	echo "Usage: jamb <input video> <output gif location>"
+	echo "Usage: jamb <input video> <output gif location> <horizontal resolution>"
+	echo "Horizontal resolution must be a positive number, and represents the amount of pixels wide the resultant gif will be."
 }
 
 # Installs proper non-libav ffmpeg from PPA, if it is not already installed.
@@ -44,7 +45,7 @@ function convert()
 	fi
 
 	# Encodes as gif, using the above palette file.
-	ffmpeg -loglevel error -i "$1" -i "${PALETTE_PATH}" -filter_complex "fps=10,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" "$2"
+	ffmpeg -loglevel error -i "$1" -i "${PALETTE_PATH}" -filter_complex "fps=10,scale=$3:-1:flags=lanczos[x];[x][1:v]paletteuse" "$2"
 	exitCode=$?
 	if [ "${exitCode}" -ne 0 ];
 	then
@@ -55,11 +56,11 @@ function convert()
 	rm "${PALETTE_PATH}"
 }
 
-if [ "$#" -ne 2 ];
+if [ "$#" -ne 3 ];
 then
 	showUsage
 	exit 1
 fi
 
 checkInstall
-convert "$1" "$2"
+convert "$1" "$2" "$3"

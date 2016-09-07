@@ -3,6 +3,8 @@ jamb
 
 Convenience script to convert a video into a gif. Primarily useful for taking the output of a screen recorder to make gifs out of.
 
+![example](repo_images/example.gif)
+
 Do you really need a full-on repo for this script?
 ====
 
@@ -14,3 +16,8 @@ What does this require?
 ====
 
 If `ffmpeg` is not installed on the system, this will automatically add the McMahon PPA (which is the non-libav version of ffmpeg) and install ffmpeg, before converting the video.
+
+What does 'jamb' mean?
+====
+
+It's the word for those wooden slats in the middle of windows. 
