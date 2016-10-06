@@ -1,6 +1,8 @@
 jamb
 ====
 
+[![Build Status](https://travis-ci.org/Knetic/jamb.svg?branch=master)](https://travis-ci.org/Knetic/jamb)
+
 Convenience script to convert a video into a gif. Primarily useful for taking the output of a screen recorder to make gifs out of.
 
 ![example](repo_images/example.gif)
@@ -20,4 +22,4 @@ If `ffmpeg` is not installed on the system, this will automatically add the McMa
 What does 'jamb' mean?
 ====
 
-It's the word for those wooden slats in the middle of windows. 
+It's the word for those wooden slats in the middle of windows.
